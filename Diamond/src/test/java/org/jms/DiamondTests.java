@@ -19,4 +19,51 @@ class DiamondTests {
         Assertions.assertNotNull(result);
         Assertions.assertEquals("A", result);
     }
+
+    @Test
+    public void Create_B()
+    {
+        // arrange
+        var letter = 'B';
+
+        // act
+        var diamond = Diamond.Create(letter);
+        var result = diamond.getText();
+
+        // assert
+        Assertions.assertNotNull(result);
+
+        String expected =
+                  " A \n"
+                + "B B\n"
+                + " A \n";
+
+        Assertions.assertEquals(expected, result);
+    }
+
+
+
+    @Test
+    public void Create_C()
+    {
+        // arrange
+        var letter = 'C';
+
+        // act
+        var diamond = Diamond.Create(letter);
+        var result = diamond.getText();
+
+        // assert
+        Assertions.assertNotNull(result);
+
+        String expected =
+                  "  A  \n"
+                + " B B \n"
+                + "C   C\n"
+                + " B B \n"
+                + "  A  \n";
+
+
+        Assertions.assertEquals(expected, result);
+    }
 }
