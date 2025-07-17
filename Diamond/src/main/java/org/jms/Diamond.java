@@ -1,7 +1,7 @@
 package org.jms;
 
 public class Diamond {
-    static String ws = " "; // whitespace char
+    static final String ws = " "; // whitespace char
 
     private String Text = "";
     public String getText() { return Text; }
@@ -13,17 +13,18 @@ public class Diamond {
         var result = new Diamond();
 
         var numberOfLetters = letter - 'A' + 1; // char can be treated as an int for maths
+
+        var padding = numberOfLetters == 1 ? 0 // A
+                : numberOfLetters == 2 ? 1 // B
+                : numberOfLetters + numberOfLetters - 3 ;
+
         var sb = new StringBuilder();
 
-        var padding = numberOfLetters;
-        if(numberOfLetters == 1){ padding = 0;}
-        if(numberOfLetters == 2){ padding = 1;}
-
-        // build each line out
+        // build lines expanding
         for(int i = 0; i < numberOfLetters; i++){
             BuildLine(numberOfLetters, i, padding, sb);
         }
-        // build lines back in
+        // build lines contracting
         for (int i = numberOfLetters -2; i >= 0; i--) {
             BuildLine(numberOfLetters, i, padding, sb);
         }
